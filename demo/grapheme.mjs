@@ -7,7 +7,7 @@
 // See <https://github.com/rust-diplomat/diplomat/issues/283>.
 delete globalThis.fetch;
 
-import { ICU4XDataProvider, ICU4XGraphemeClusterSegmenter } from '../index.mjs';
+import { ICU4XDataProvider, ICU4XGraphemeClusterSegmenter, SegmenterImplICU4X } from '../index.mjs';
 
 const icu4xSegmenter = ICU4XGraphemeClusterSegmenter.create(ICU4XDataProvider.create_compiled());
 
@@ -18,6 +18,15 @@ function getIcu4xSegments(string) {
     while ((j = breakIterator.next()) !== -1) {
         collectedSegments.push(i);
         i = j;
+    }
+    return collectedSegments;
+}
+
+function getPonyfillSegments(string) {
+    let ecmaSegmenter = new SegmenterImplICU4X(undefined, { granularity: "grapheme" });
+    let collectedSegments = [];
+    for (let segment of ecmaSegmenter.segment(string)) {
+        collectedSegments.push(segment.index);
     }
     return collectedSegments;
 }
@@ -34,6 +43,7 @@ function getEcmaSegments(string) {
 const shortString = "𑄃𑄨𑄁𑄢𑄨𑄎𑄨";
 
 console.log(getIcu4xSegments(shortString));
+console.log(getPonyfillSegments(shortString));
 console.log(getEcmaSegments(shortString));
 
 let strings = [
@@ -71,8 +81,11 @@ console.log("Big string length:", bigString.length);
 let time0 = new Date().valueOf();
 console.log("ICU4X Segments:", getIcu4xSegments(bigString).length);
 let time1 = new Date().valueOf();
-console.log("ECMA Segments:", getEcmaSegments(bigString).length);
+console.log("Ponyfill Segments:", getPonyfillSegments(bigString).length);
 let time2 = new Date().valueOf();
+console.log("ECMA Segments:", getEcmaSegments(bigString).length);
+let time3 = new Date().valueOf();
 
 console.log("ICU4X Speed:", time1 - time0);
-console.log("ECMA Speed:", time2 - time1);
+console.log("Ponyfill Speed:", time2 - time1);
+console.log("ECMA Speed:", time3 - time2);
