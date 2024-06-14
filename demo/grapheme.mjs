@@ -70,7 +70,7 @@ let strings = [
 ];
 
 let bigString = "";
-for (let i=0; i<100; i++) {
+for (let i=0; i<508; i++) {
     for (let string of strings) {
         bigString += string + " ";
     }
