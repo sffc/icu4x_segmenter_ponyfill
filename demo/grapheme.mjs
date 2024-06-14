@@ -7,7 +7,7 @@
 // See <https://github.com/rust-diplomat/diplomat/issues/283>.
 delete globalThis.fetch;
 
-import {ICU4XDataProvider, ICU4XGraphemeClusterSegmenter } from './lib/index.mjs';
+import { ICU4XDataProvider, ICU4XGraphemeClusterSegmenter } from '../index.mjs';
 
 const icu4xSegmenter = ICU4XGraphemeClusterSegmenter.create(ICU4XDataProvider.create_compiled());
 
