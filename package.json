@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "fmt": "eslint --format stylish ."
+    "fmt": "eslint --format stylish .",
+    "minify": "esbuild --bundle index.mjs --outdir=dist --minify --sourcemap --platform=node --format=esm --out-extension:.js=.mjs"
   },
   "keywords": [
     "ecma402",
@@ -21,5 +22,8 @@
     "@eslint/js": "^9.4.0",
     "eslint": "^9.4.0",
     "globals": "^15.4.0"
+  },
+  "dependencies": {
+    "esbuild": "^0.21.5"
   }
 }
