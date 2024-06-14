@@ -35,7 +35,7 @@ function getEcmaSegments(string) {
     return collectedSegments;
 }
 
-const shortString = "𑄃𑄨𑄁𑄢𑄨𑄎𑄨";
+const shortString = process.argv?.[2] ? process.argv?.[2] : "𑄃𑄨𑄁𑄢𑄨𑄎𑄨";
 
 console.log(getIcu4xSegments(shortString));
 console.log(getPonyfillSegments(shortString));
