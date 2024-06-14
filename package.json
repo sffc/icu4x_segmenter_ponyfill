@@ -1,0 +1,25 @@
+{
+  "name": "icu4x_segmenter_ponyfill",
+  "version": "0.0.1",
+  "description": "Implementation of Intl.Segmenter based on ICU4X",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "fmt": "eslint --format stylish ."
+  },
+  "keywords": [
+    "ecma402",
+    "ecma-402",
+    "intl",
+    "segmenter",
+    "icu4x"
+  ],
+  "author": "Shane F. Carr",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "eslint": "^9.4.0",
+    "globals": "^15.4.0"
+  }
+}

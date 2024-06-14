@@ -1,4 +1,4 @@
-export * from "./icu4x/lib/index.mjs";
+export { ICU4XDataProvider, ICU4XGraphemeClusterSegmenter } from "./icu4x/lib/index.mjs";
 import { ICU4XDataProvider, ICU4XGraphemeClusterSegmenter } from "./icu4x/lib/index.mjs";
 
 // https://tc39.es/ecma402/#sec-getoption
