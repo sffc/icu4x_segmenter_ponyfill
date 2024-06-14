@@ -16,7 +16,7 @@
     "icu4x"
   ],
   "author": "Shane F. Carr",
-  "license": "ISC",
+  "license": "Unicode-3.0",
   "devDependencies": {
     "@eslint/js": "^9.4.0",
     "eslint": "^9.4.0",
