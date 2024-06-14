@@ -2,11 +2,6 @@
 // called LICENSE at the top level of the ICU4X source tree
 // (online at: https://github.com/unicode-org/icu4x/blob/main/LICENSE ).
 
-// ICU4X uses fetch when available, but fetch in Node.js is broken,
-// so delete the function to force the wasm to be loaded via the fs module.
-// See <https://github.com/rust-diplomat/diplomat/issues/283>.
-delete globalThis.fetch;
-
 import { ICU4XDataProvider, ICU4XGraphemeClusterSegmenter, SegmenterImplICU4X } from '../index.mjs';
 
 const icu4xSegmenter = ICU4XGraphemeClusterSegmenter.create(ICU4XDataProvider.create_compiled());
